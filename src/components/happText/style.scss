@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Roboto:900|Russo+One');
+
+.heart {
+  color:rgb(255, 255, 255);
+  position: fixed;
+  animation: heartMobile 5s linear infinite;
+  bottom: 20vh;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    left: 25vw;
+    animation: heart 5s linear infinite;
+  }
+}
+
+.heart-icon {
+  color: white;
+  font-size: 44px;
+}
+
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 150 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+$color: #aeb;
+
+.text {
+  margin-left: 5px; /* optical correction */
+}
+
+.text > p {
+  margin-top:30vh;
+  width: 22px;
+  display: inline-block;
+  font-size: 0px;
+  font-family: 'Russo One';
+  font-weight: 200;
+  color:#fff;
+  @media(min-width: 768px) {
+    width: 42px;
+  }
+}
+
+@for $i from 1 to 20 {
+  .text > p:nth-child(#{$i}) { 
+    text-shadow: makelongshadow(adjust-hue($color, $i * 30));
+    animation: showupMobile 5s infinite $i * 0.20s;
+    
+    @media (min-width: 768px) {
+      animation: showup 5s infinite $i * 0.20s;
+    }
+  }
+}
+
+@keyframes showup {
+  0% {
+    font-size:0px;
+    transform:rotate(90deg);
+  }
+  5% {
+    font-size:60px;
+  }
+  10% {
+    transform:rotate(0deg);
+    font-size:66px;
+  }
+  60% {
+    opacity: 1; 
+    font-size:66px;
+  }
+  71% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform:rotate(0deg);
+    font-size:66px;
+  }
+}
+
+@keyframes showupMobile {
+  0% {
+    font-size:0px;
+    transform:rotate(90deg);
+  }
+  5% {
+    font-size:30px;
+  }
+  10% {
+    font-size:36px;
+    transform:rotate(0deg);
+  }
+  60% {
+    font-size:36px;
+    opacity: 1; 
+  }
+  71% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    font-size:36px;
+    transform:rotate(0deg);
+  }
+}
+
+
+@keyframes heart {
+  0% { opacity: 0; }
+  30% {
+    opacity: 0;
+    font-size:42px;
+  }
+  40% {
+    opacity: 1; 
+    font-size:42px;
+  }
+  70% {
+    opacity: 1; 
+    font-size:42px;
+  }
+  80% {
+    opacity: 0; 
+    font-size:30px; 
+  }
+  100% { opacity: 0; }
+}
+
+@keyframes heartMobile {
+  0% { opacity: 0; }
+  30% {
+    opacity: 0; 
+    font-size: 20px;
+  }
+  40% {
+    opacity: 1; 
+    font-size: 20px;
+  }
+  60% {
+    opacity: 0.8; 
+    font-size: 20px;
+  }
+  80% {
+    opacity: 0; 
+    font-size: 20px;
+  }
+  90% {
+    opacity: 0; 
+    font-size: 14px;
+  }
+  100% { opacity: 0; }
+}
+
+.user-name{
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(253, 74, 74);
+  @media (min-width: 768px) {
+    font-size: 50px;
+  }
+}
